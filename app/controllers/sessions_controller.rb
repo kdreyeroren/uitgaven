@@ -7,21 +7,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    account = Account.find_by_username(params[:session][:username])
-    if account
-      password_correct = account.authenticate(params[:session][:password])
-      if password_correct
-        session[:account_id] = account.id
-        redirect_to root_path
-      else
-        flash.now[:notice] = 'Invalid email or password'
-        new
-        render :new
-      end
+    @session = Session.new(params[:session][:username], params[:session][:password])
+    if @session.can_login?
+      session[:account_id] = @session.account.id
+      redirect_to root_path
     else
       flash.now[:notice] = 'Invalid email or password'
-      new
-      render :new 
+      render :new
     end
   end
 
