@@ -26,7 +26,7 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapsede navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><%= link_to "Log In", login_path %></li>
         <li><a href="#">Link</a></li>
@@ -40,8 +40,14 @@
 
 
   <% if flash[:notice] %>
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-success" role="alert">
       <div><%= flash[:notice] %></div>
+    </div>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <div class="alert alert-danger" role="alert">
+      <div><%= flash[:alert] %></div>
     </div>
   <% end %>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407232731) do
+ActiveRecord::Schema.define(version: 20160526222545) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "username",        null: false
@@ -23,5 +23,20 @@ ActiveRecord::Schema.define(version: 20160407232731) do
 
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true
   add_index "accounts", ["username"], name: "index_accounts_on_username", unique: true
+
+  create_table "expenses", force: :cascade do |t|
+    t.integer  "account_id",                             null: false
+    t.decimal  "amount",        precision: 16, scale: 2, null: false
+    t.string   "merchant_name",                          null: false
+    t.date     "purchased_on",                           null: false
+    t.string   "category",                               null: false
+    t.string   "description",                            null: false
+    t.string   "receipt"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "expenses", ["account_id"], name: "index_expenses_on_account_id"
+  add_index "expenses", ["category"], name: "index_expenses_on_category"
 
 end

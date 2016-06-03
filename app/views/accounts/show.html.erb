@@ -10,5 +10,31 @@
   <%= @account.email %>
 </p>
 
+<p>
+  <strong>Expenses:</strong>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Merchant Name</th>
+        <th>Expense Amount</th>
+        <th>Purchase Date</th>
+        <th>Category</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @account.expenses.each do |expense| %>
+        <tr>
+        <td><%= expense.merchant_name %></td>
+        <td><%= number_to_currency(expense.amount) %></td>
+        <td><%= expense.purchased_on %></td>
+        <td><%= expense.category %></td>
+        <td><%= expense.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>

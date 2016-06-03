@@ -25,4 +25,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_account
+    @current_account ||= Account.find(session[:account_id])
+  end
+
 end

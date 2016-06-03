@@ -1,0 +1,31 @@
+<p>
+  <strong>Amount:</strong>
+  <%= number_to_currency(@expense.amount) %>
+</p>
+
+<p>
+  <strong>Merchant Name:</strong>
+  <%= @expense.merchant_name %>
+</p>
+
+<p>
+  <strong>Purchase Date:</strong>
+  <%= @expense.purchased_on %>
+</p>
+
+<p>
+  <strong>Expense Category:</strong>
+  <%= @expense.category %>
+</p>
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @expense.description %>
+</p>
+
+<p>
+  <strong>Receipt:</strong>
+  <br> <!-- for coffee and a cigarette -->
+  <%= link_to(image_tag(@expense.receipt.thumb.url), @expense.receipt.url, html_options = {}) %>
+</p>

@@ -4,11 +4,7 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    if logged_in?
-      @accounts = Account.all
-    else
-      redirect_to login_path
-    end
+    @accounts = Account.all
   end
 
   # GET /accounts/1
