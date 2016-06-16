@@ -4,7 +4,12 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.all
+    if current_account.admin == true
+      @accounts = Account.all
+    else
+      flash[:alert] = 'Bugger off'
+      redirect_to root_path
+    end
   end
 
   # GET /accounts/1
